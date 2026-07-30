@@ -1,87 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+function sendMessage() {
 
-<title>BrightAI</title>
+    let input = document.getElementById("message");
+    let chat = document.getElementById("chat");
 
-<link rel="stylesheet" href="style.css">
+    if (input.value.trim() === "") return;
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    chat.innerHTML += `
+        <div class="user">
+            ${input.value}
+        </div>
+    `;
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    chat.innerHTML += `
+        <div class="bot">
+            Thinking...
+        </div>
+    `;
 
-</head>
+    chat.scrollTop = chat.scrollHeight;
 
-<body>
+    setTimeout(() => {
+        let bots = document.getElementsByClassName("bot");
+        bots[bots.length - 1].innerHTML =
+            "I am BrightAI. Soon I will answer with real AI.";
+    }, 800);
 
-<div class="sidebar">
+    input.value = "";
+}
 
-<div class="logo">
-
-<h1>🤖 BrightAI</h1>
-
-</div>
-
-<button class="newChat">
-+ New Chat
-</button>
-
-<div class="history">
-
-<p>Today's Chats</p>
-
-<ul>
-
-<li>Welcome</li>
-
-<li>Python</li>
-
-<li>Artificial Intelligence</li>
-
-</ul>
-
-</div>
-
-</div>
-
-<div class="main">
-
-<div id="chat">
-
-<div class="bot">
-
-Hello 👋
-
-I am <b>BrightAI</b>.
-
-How can I help you today?
-
-</div>
-
-</div>
-
-<div class="inputArea">
-
-<input
-id="message"
-type="text"
-placeholder="Message BrightAI...">
-
-<button onclick="sendMessage()">
-
-Send
-
-</button>
-
-</div>
-
-</div>
-
-<script src="script.js"></script>
-
-</body>
-
-</html>
+document.getElementById("message").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+});
