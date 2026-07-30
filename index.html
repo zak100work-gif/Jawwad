@@ -3,150 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>BrightAI</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+<link rel="stylesheet" href="style.css">
 
-body{
-background:#0f172a;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-color:white;
-}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-.chat{
-width:420px;
-height:650px;
-background:#1e293b;
-border-radius:20px;
-overflow:hidden;
-display:flex;
-flex-direction:column;
-box-shadow:0 0 20px rgba(0,0,0,.5);
-}
-
-.header{
-background:#2563eb;
-padding:20px;
-text-align:center;
-}
-
-.header img{
-width:80px;
-margin-bottom:10px;
-}
-
-.messages{
-flex:1;
-padding:20px;
-overflow-y:auto;
-}
-
-.bot{
-background:#334155;
-padding:12px;
-border-radius:10px;
-margin-bottom:15px;
-}
-
-.user{
-background:#2563eb;
-padding:12px;
-border-radius:10px;
-margin-bottom:15px;
-text-align:right;
-}
-
-.bottom{
-display:flex;
-padding:15px;
-background:#111827;
-}
-
-input{
-flex:1;
-padding:12px;
-border:none;
-border-radius:8px;
-font-size:16px;
-}
-
-button{
-margin-left:10px;
-padding:12px 20px;
-background:#22c55e;
-border:none;
-border-radius:8px;
-color:white;
-cursor:pointer;
-font-size:16px;
-}
-
-button:hover{
-background:#16a34a;
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class="chat">
+<div class="sidebar">
 
-<div class="header">
-<img src="Screenshot%202026-07-29%20111944.png" alt="BrightAI Logo">
-<h2>🤖 BrightAI</h2>
-<p>Your Personal AI Assistant</p>
+<div class="logo">
+
+<h1>🤖 BrightAI</h1>
+
 </div>
 
-<div class="messages" id="chat">
+<button class="newChat">
++ New Chat
+</button>
+
+<div class="history">
+
+<p>Today's Chats</p>
+
+<ul>
+
+<li>Welcome</li>
+
+<li>Python</li>
+
+<li>Artificial Intelligence</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="main">
+
+<div id="chat">
 
 <div class="bot">
-Hello! 👋 Welcome to BrightAI.<br><br>
-Ask me anything.
-</div>
+
+Hello 👋
+
+I am <b>BrightAI</b>.
+
+How can I help you today?
 
 </div>
 
-<div class="bottom">
+</div>
+
+<div class="inputArea">
 
 <input
 id="message"
 type="text"
-placeholder="Type your message...">
+placeholder="Message BrightAI...">
 
-<button onclick="sendMessage()">Send</button>
+<button onclick="sendMessage()">
+
+Send
+
+</button>
 
 </div>
 
 </div>
 
-<script>
-function sendMessage(){
-
-let message=document.getElementById("message");
-let chat=document.getElementById("chat");
-
-if(message.value==="") return;
-
-chat.innerHTML += `<div class="user">${message.value}</div>`;
-
-chat.innerHTML += `<div class="bot">I am BrightAI. My real AI brain will be connected soon. 🚀</div>`;
-
-message.value="";
-
-chat.scrollTop = chat.scrollHeight;
-
-}
-</script>
+<script src="script.js"></script>
 
 </body>
+
 </html>
