@@ -1,35 +1,43 @@
-function sendMessage() {
+<p>Artificial Intelligence</p>
 
-    let input = document.getElementById("message");
-    let chat = document.getElementById("chat");
+<p>Python Help</p>
 
-    if (input.value.trim() === "") return;
+</div>
 
-    chat.innerHTML += `
-        <div class="user">
-            ${input.value}
-        </div>
-    `;
+</div>
 
-    chat.innerHTML += `
-        <div class="bot">
-            Thinking...
-        </div>
-    `;
+<div class="main">
 
-    chat.scrollTop = chat.scrollHeight;
+<div class="header">
+BrightAI Assistant
+</div>
 
-    setTimeout(() => {
-        let bots = document.getElementsByClassName("bot");
-        bots[bots.length - 1].innerHTML =
-            "I am BrightAI. Soon I will answer with real AI.";
-    }, 800);
+<div class="chat" id="chat">
 
-    input.value = "";
+<div class="bot-message">
+👋 Hello! I am BrightAI.<br><br>
+Ask me anything.
+</div>
+bots[bots.length-1].innerHTML=
+"🤖 I am BrightAI.<br><br>This is the first version of your AI chatbot. Soon I will answer questions using real Artificial Intelligence!";
+
+chat.scrollTop=chat.scrollHeight;
+
+},800);
+
+input.value="";
+
 }
 
-document.getElementById("message").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        sendMessage();
-    }
-});
+document.getElementById("message").addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+
+sendMessage();
+
+}
+</script>
+
+</body>
+
+</html>
