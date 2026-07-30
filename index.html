@@ -1,43 +1,78 @@
-<p>Artificial Intelligence</p>
-
-<p>Python Help</p>
-
 </div>
 
 </div>
 
 <div class="main">
 
-<div class="header">
+<div class="topbar">
 BrightAI Assistant
 </div>
 
 <div class="chat" id="chat">
 
-<div class="bot-message">
-👋 Hello! I am BrightAI.<br><br>
-Ask me anything.
+<div class="bot">
+
+👋 Hello!
+
+I am BrightAI.
+
+How can I help you today?
+
 </div>
-bots[bots.length-1].innerHTML=
-"🤖 I am BrightAI.<br><br>This is the first version of your AI chatbot. Soon I will answer questions using real Artificial Intelligence!";
+</div>
 
-chat.scrollTop=chat.scrollHeight;
+<div class="bottom">
 
-},800);
+<input
+type="text"
+id="message"
+placeholder="Message BrightAI...">
+
+<button onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function sendMessage(){
+
+const input = document.getElementById("message");
+const chat = document.getElementById("chat");
+
+if(input.value.trim()==="") return;
+
+chat.innerHTML += `
+<div class="user">
+${input.value}
+</div>
+`;
+
+chat.innerHTML += `
+<div class="bot" id="typing">
+🤖 BrightAI is thinking...
+</div>
+`;
+
+chat.scrollTop = chat.scrollHeight;
+
+setTimeout(function(){
+
+document.getElementById("typing").innerHTML =
+`Hello! I am BrightAI.<br><br>
+This is the first version of your AI chatbot. Soon I will be connected to a real AI model so I can answer your questions. 🚀`;
+
+chat.scrollTop = chat.scrollHeight;
+
+},1000);
 
 input.value="";
-
-}
-
-document.getElementById("message").addEventListener("keypress",function(e){
-
-if(e.key==="Enter"){
-
-sendMessage();
 
 }
 </script>
 
 </body>
-
-</html>
+</htm
