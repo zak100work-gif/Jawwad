@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>BrightAI Chat</title>
@@ -19,10 +17,10 @@ font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-background:#202123;
-color:white;
 display:flex;
 height:100vh;
+background:#202123;
+color:white;
 overflow:hidden;
 }
 
@@ -37,29 +35,28 @@ flex-direction:column;
 .logo{
 font-size:30px;
 font-weight:bold;
-color:#38bdf8;
 text-align:center;
-margin-bottom:30px;
+margin-bottom:25px;
+color:#38bdf8;
 }
 
-.new-chat{
+.newChat{
+padding:14px;
+border:none;
+border-radius:8px;
 background:#10a37f;
 color:white;
-border:none;
-padding:14px;
-border-radius:8px;
 font-size:16px;
 cursor:pointer;
 margin-bottom:25px;
 }
 
-.new-chat:hover{
+.newChat:hover{
 background:#0d8c6c;
 }
 
 .sidebar h3{
-margin-bottom:15px;
-color:#cbd5e1;
+margin-bottom:12px;
 }
 
 .sidebar ul{
@@ -93,113 +90,75 @@ align-items:center;
 }
 
 .header h1{
-font-size:28px;
 color:#38bdf8;
+font-size:28px;
 }
 
-.home-btn{
-text-decoration:none;
+.home{
 background:#2563eb;
 color:white;
 padding:10px 18px;
 border-radius:8px;
+text-decoration:none;
 }
 
-.home-btn:hover{
+.home:hover{
 background:#1d4ed8;
 }
 
 .chat{
 flex:1;
-padding:25px;
 overflow-y:auto;
-background:#202123;
+padding:25px;
 }
 
 .bot{
-
 background:#444654;
-
 padding:15px;
-
 border-radius:12px;
-
 margin-bottom:15px;
-
 max-width:70%;
-
 line-height:1.6;
-
 }
 
 .user{
-
 background:#10a37f;
-
 padding:15px;
-
 border-radius:12px;
-
 margin-left:auto;
-
 margin-bottom:15px;
-
 max-width:70%;
-
 line-height:1.6;
-
 }
 
 .bottom{
-
 display:flex;
-
 padding:20px;
-
 background:#2b2c2f;
-
 }
 
 .bottom input{
-
 flex:1;
-
-padding:16px;
-
-border:none;
-
-border-radius:10px;
-
+padding:15px;
 font-size:16px;
-
+border:none;
+border-radius:10px;
 outline:none;
-
 }
 
 .bottom button{
-
 margin-left:10px;
-
-padding:16px 30px;
-
+padding:15px 30px;
 background:#10a37f;
-
 color:white;
-
 border:none;
-
 border-radius:10px;
-
 cursor:pointer;
-
 font-size:16px;
-
 }
 
 .bottom button:hover{
-
 background:#0d8c6c;
-
 }
 
 </style>
@@ -213,7 +172,7 @@ background:#0d8c6c;
 🤖 BrightAI
 </div>
 
-<button class="new-chat" onclick="newChat()">
+<button class="newChat" onclick="newChat()">
 ➕ New Chat
 </button>
 
@@ -233,7 +192,7 @@ background:#0d8c6c;
 
 <h1>BrightAI Chat</h1>
 
-<a href="index.html" class="home-btn">
+<a href="index.html" class="home">
 🏠 Home
 </a>
 
@@ -244,7 +203,7 @@ background:#0d8c6c;
 <div class="bot">
 👋 Hello! I am <b>BrightAI</b>.<br><br>
 
-Ask me anything and I'll do my best to help you.
+Welcome to BrightAI! Ask me anything about programming, AI, websites, or technology.
 </div>
 
 </div>
@@ -254,17 +213,8 @@ Ask me anything and I'll do my best to help you.
 <input
 type="text"
 id="message"
-placeholder="Message BrightAI..."
->
-
-<button onclick="sendMessage()">
-Send
-</button>
-
-</div>
-
-</div>
-<script>
+placeholder="Type your message..."
+  <script>
 
 const input = document.getElementById("message");
 const chat = document.getElementById("chat");
@@ -285,26 +235,43 @@ input.value="";
 
 chat.scrollTop = chat.scrollHeight;
 
+// Show typing message
+chat.innerHTML += `
+<div class="bot" id="typing">
+🤖 BrightAI is typing...
+</div>
+`;
+
+chat.scrollTop = chat.scrollHeight;
+
 setTimeout(function(){
 
-let reply = "I'm still learning. Soon I'll be connected to a real AI model!";
+const typing=document.getElementById("typing");
+if(typing){
+typing.remove();
+}
 
-const text = message.toLowerCase();
+let reply="I'm still learning. Soon I'll be connected to a real AI model!";
+
+const text=message.toLowerCase();
 
 if(text.includes("hello") || text.includes("hi")){
 reply="👋 Hello! How can I help you today?";
 }
 else if(text.includes("your name")){
-reply="My name is BrightAI.";
+reply="🤖 My name is BrightAI.";
 }
 else if(text.includes("python")){
-reply="Python is one of the best programming languages for AI and web development.";
+reply="🐍 Python is one of the most popular programming languages for AI, automation, and web development.";
 }
 else if(text.includes("html")){
-reply="HTML is used to create the structure of web pages.";
+reply="🌐 HTML is used to build the structure of websites.";
 }
 else if(text.includes("css")){
-reply="CSS makes websites beautiful by controlling colors, layouts, and fonts.";
+reply="🎨 CSS is used to style and design websites.";
+}
+else if(text.includes("javascript")){
+reply="⚡ JavaScript makes websites interactive and dynamic.";
 }
 
 chat.innerHTML += `
@@ -315,7 +282,7 @@ ${reply}
 
 chat.scrollTop = chat.scrollHeight;
 
-},700);
+},1500);
 
 }
 
@@ -329,10 +296,10 @@ sendMessage();
 
 function newChat(){
 
-chat.innerHTML = `
+chat.innerHTML=`
 <div class="bot">
 👋 Hello! I am <b>BrightAI</b>.<br><br>
-How can I help you today?
+Welcome to BrightAI! How can I help you today?
 </div>
 `;
 
@@ -343,5 +310,14 @@ input.value="";
 </script>
 
 </body>
+</html>
+autocomplete="off"
+>
 
-</html
+<button onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+</div>
