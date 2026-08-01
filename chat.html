@@ -321,3 +321,62 @@ Send
 </div>
 
 </div>
+function sendMessage() {
+    let input = document.getElementById("userInput");
+    let message = input.value;
+
+    if (message.trim() === "") {
+        return;
+    }
+
+    let chatBox = document.getElementById("chatBox");
+
+    // User message
+    chatBox.innerHTML += 
+    "<p><b>You:</b> " + message + "</p>";
+
+    // Simple AI reply (practice version)
+    let reply = getAIReply(message);
+
+    chatBox.innerHTML += 
+    "<p><b>BrightAI:</b> " + reply + "</p>";
+
+    input.value = "";
+}
+
+
+function getAIReply(question) {
+
+    question = question.toLowerCase();
+
+    if (question.includes("hello")) {
+        return "Hello! I am BrightAI. How can I help you?";
+    }
+
+    else if (question.includes("computer")) {
+        return "Computers work using hardware and software.";
+    }
+
+    else if (question.includes("ai")) {
+        return "AI allows computers to learn, understand and solve problems.";
+    }
+
+    else {
+        return "I am still learning. Soon I will become a smarter AI assistant!";
+    }
+}
+<div class="chat-container">
+
+    <h1>🤖 BrightAI</h1>
+
+    <div id="chatBox">
+        <p><b>BrightAI:</b> Hello! Ask me anything.</p>
+    </div>
+
+    <input id="userInput" placeholder="Type your question...">
+
+    <button onclick="sendMessage()">Send</button>
+
+</div>
+
+<script src="script.js"></script>
