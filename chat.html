@@ -36,27 +36,28 @@ flex-direction:column;
 font-size:30px;
 font-weight:bold;
 text-align:center;
-margin-bottom:25px;
 color:#38bdf8;
+margin-bottom:30px;
 }
 
-.newChat{
-padding:14px;
-border:none;
-border-radius:8px;
+.new-chat{
 background:#10a37f;
 color:white;
+border:none;
+padding:14px;
 font-size:16px;
+border-radius:8px;
 cursor:pointer;
 margin-bottom:25px;
 }
 
-.newChat:hover{
+.new-chat:hover{
 background:#0d8c6c;
 }
 
 .sidebar h3{
-margin-bottom:12px;
+margin-bottom:15px;
+color:#d1d5db;
 }
 
 .sidebar ul{
@@ -90,26 +91,26 @@ align-items:center;
 }
 
 .header h1{
+font-size:30px;
 color:#38bdf8;
-font-size:28px;
 }
 
-.home{
+.home-btn{
+text-decoration:none;
 background:#2563eb;
 color:white;
 padding:10px 18px;
 border-radius:8px;
-text-decoration:none;
 }
 
-.home:hover{
+.home-btn:hover{
 background:#1d4ed8;
 }
 
 .chat{
 flex:1;
-overflow-y:auto;
 padding:25px;
+overflow-y:auto;
 }
 
 .bot{
@@ -166,13 +167,12 @@ background:#0d8c6c;
 </head>
 
 <body>
-<div class="sidebar">
 
 <div class="logo">
 🤖 BrightAI
 </div>
 
-<button class="newChat" onclick="newChat()">
+<button class="new-chat" onclick="newChat()">
 ➕ New Chat
 </button>
 
@@ -192,7 +192,7 @@ background:#0d8c6c;
 
 <h1>BrightAI Chat</h1>
 
-<a href="index.html" class="home">
+<a href="index.html" class="home-btn">
 🏠 Home
 </a>
 
@@ -205,7 +205,6 @@ background:#0d8c6c;
 
 Welcome to BrightAI! Ask me anything about programming, AI, websites, or technology.
 </div>
-
 </div>
 
 <div class="bottom">
@@ -213,8 +212,18 @@ Welcome to BrightAI! Ask me anything about programming, AI, websites, or technol
 <input
 type="text"
 id="message"
-placeholder="Type your message..."
-  <script>
+placeholder="Type your message here..."
+autocomplete="off"
+>
+
+<button onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+</div>
+<script>
 
 const input = document.getElementById("message");
 const chat = document.getElementById("chat");
@@ -226,16 +235,12 @@ const message = input.value.trim();
 if(message==="") return;
 
 chat.innerHTML += `
-<div class="user">
-${message}
-</div>
+<div class="user">${message}</div>
 `;
 
-input.value="";
-
+input.value = "";
 chat.scrollTop = chat.scrollHeight;
 
-// Show typing message
 chat.innerHTML += `
 <div class="bot" id="typing">
 🤖 BrightAI is typing...
@@ -246,38 +251,36 @@ chat.scrollTop = chat.scrollHeight;
 
 setTimeout(function(){
 
-const typing=document.getElementById("typing");
+const typing = document.getElementById("typing");
 if(typing){
 typing.remove();
 }
 
-let reply="I'm still learning. Soon I'll be connected to a real AI model!";
+let reply = "I'm still learning. Soon I'll be connected to a real AI model!";
 
-const text=message.toLowerCase();
+const text = message.toLowerCase();
 
 if(text.includes("hello") || text.includes("hi")){
-reply="👋 Hello! How can I help you today?";
+reply = "👋 Hello! How can I help you today?";
 }
 else if(text.includes("your name")){
-reply="🤖 My name is BrightAI.";
+reply = "🤖 My name is BrightAI.";
 }
 else if(text.includes("python")){
-reply="🐍 Python is one of the most popular programming languages for AI, automation, and web development.";
+reply = "🐍 Python is one of the best programming languages for AI.";
 }
 else if(text.includes("html")){
-reply="🌐 HTML is used to build the structure of websites.";
+reply = "🌐 HTML creates the structure of a website.";
 }
 else if(text.includes("css")){
-reply="🎨 CSS is used to style and design websites.";
+reply = "🎨 CSS styles your website.";
 }
 else if(text.includes("javascript")){
-reply="⚡ JavaScript makes websites interactive and dynamic.";
+reply = "⚡ JavaScript adds interactivity to websites.";
 }
 
 chat.innerHTML += `
-<div class="bot">
-${reply}
-</div>
+<div class="bot">${reply}</div>
 `;
 
 chat.scrollTop = chat.scrollHeight;
@@ -286,24 +289,22 @@ chat.scrollTop = chat.scrollHeight;
 
 }
 
-input.addEventListener("keypress",function(event){
-
+input.addEventListener("keypress", function(event){
 if(event.key==="Enter"){
 sendMessage();
 }
-
 });
 
 function newChat(){
 
-chat.innerHTML=`
+chat.innerHTML = `
 <div class="bot">
 👋 Hello! I am <b>BrightAI</b>.<br><br>
-Welcome to BrightAI! How can I help you today?
+How can I help you today?
 </div>
 `;
 
-input.value="";
+input.value = "";
 
 }
 
@@ -311,72 +312,3 @@ input.value="";
 
 </body>
 </html>
-autocomplete="off"
->
-
-<button onclick="sendMessage()">
-Send
-</button>
-
-</div>
-
-</div>
-function sendMessage() {
-    let input = document.getElementById("userInput");
-    let message = input.value;
-
-    if (message.trim() === "") {
-        return;
-    }
-
-    let chatBox = document.getElementById("chatBox");
-
-    // User message
-    chatBox.innerHTML += 
-    "<p><b>You:</b> " + message + "</p>";
-
-    // Simple AI reply (practice version)
-    let reply = getAIReply(message);
-
-    chatBox.innerHTML += 
-    "<p><b>BrightAI:</b> " + reply + "</p>";
-
-    input.value = "";
-}
-
-
-function getAIReply(question) {
-
-    question = question.toLowerCase();
-
-    if (question.includes("hello")) {
-        return "Hello! I am BrightAI. How can I help you?";
-    }
-
-    else if (question.includes("computer")) {
-        return "Computers work using hardware and software.";
-    }
-
-    else if (question.includes("ai")) {
-        return "AI allows computers to learn, understand and solve problems.";
-    }
-
-    else {
-        return "I am still learning. Soon I will become a smarter AI assistant!";
-    }
-}
-<div class="chat-container">
-
-    <h1>🤖 BrightAI</h1>
-
-    <div id="chatBox">
-        <p><b>BrightAI:</b> Hello! Ask me anything.</p>
-    </div>
-
-    <input id="userInput" placeholder="Type your question...">
-
-    <button onclick="sendMessage()">Send</button>
-
-</div>
-
-<script src="script.js"></script>
