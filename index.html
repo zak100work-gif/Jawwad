@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BrightAI</title>
+<title>BrightAI - Home</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -24,6 +25,8 @@ header{
     align-items:center;
     padding:20px 60px;
     background:#111827;
+    position:sticky;
+    top:0;
 }
 
 .logo{
@@ -57,11 +60,12 @@ nav a:hover{
     font-size:22px;
     color:#cbd5e1;
     margin-bottom:40px;
+    line-height:1.6;
 }
 
 .button{
     display:inline-block;
-    padding:15px 35px;
+    padding:16px 35px;
     background:#2563eb;
     color:white;
     text-decoration:none;
@@ -76,32 +80,46 @@ nav a:hover{
 .features{
     display:flex;
     justify-content:center;
-    gap:30px;
     flex-wrap:wrap;
-    padding:50px;
+    gap:25px;
+    padding:60px 30px;
 }
 
 .card{
+    width:300px;
     background:#1e293b;
-    width:280px;
-    padding:30px;
     border-radius:15px;
+    padding:30px;
     text-align:center;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
 }
 
 .card h2{
     margin-bottom:15px;
+    color:#38bdf8;
+}
+
+.card p{
+    color:#cbd5e1;
+    line-height:1.5;
 }
 
 footer{
     text-align:center;
-    padding:25px;
     background:#111827;
+    padding:25px;
     margin-top:50px;
+    color:#94a3b8;
 }
+
 </style>
 
 </head>
+
 <body>
 
 <header>
@@ -111,10 +129,10 @@ footer{
 </div>
 
 <nav>
-<a href="#">Home</a>
-<a href="#">About</a>
-<a href="#">Chat</a>
-<a href="#">Contact</a>
+<a href="index.html">Home</a>
+<a href="chat.html">Chat</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
 </nav>
 
 </header>
@@ -125,10 +143,10 @@ footer{
 
 <p>
 The Future of Artificial Intelligence.<br>
-Learn, Chat and Explore AI with BrightAI.
+Chat, Learn and Explore with BrightAI.
 </p>
 
-<a href="#" class="button">
+<a href="chat.html" class="button">
 Start Chatting
 </a>
 
@@ -137,25 +155,31 @@ Start Chatting
 <section class="features">
 
 <div class="card">
-<h2>⚡ Fast</h2>
-<p>Quick responses powered by Artificial Intelligence.</p>
+<h2>🤖 AI Chat</h2>
+<p>
+Chat with BrightAI and get quick answers to your questions.
+</p>
 </div>
 
 <div class="card">
-<h2>🧠 Smart</h2>
-<p>Ask questions and receive intelligent answers.</p>
+<h2>⚡ Fast</h2>
+<p>
+Designed for speed with a clean and modern interface.
+</p>
 </div>
 
 <div class="card">
 <h2>🔒 Secure</h2>
-<p>Your conversations stay private and secure.</p>
+<p>
+Built with privacy and security in mind for future updates.
+</p>
 </div>
 
 </section>
 
 <footer>
 
-© 2026 BrightAI. All Rights Reserved.
+<p>© 2026 BrightAI. All Rights Reserved.</p>
 
 </footer>
 
