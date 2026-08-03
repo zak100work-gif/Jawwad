@@ -17,15 +17,15 @@ font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-display:flex;
-height:100vh;
 background:#202123;
 color:white;
+display:flex;
+height:100vh;
 overflow:hidden;
 }
 
 .sidebar{
-width:260px;
+width:250px;
 background:#171717;
 padding:20px;
 display:flex;
@@ -33,20 +33,23 @@ flex-direction:column;
 }
 
 .logo{
-font-size:30px;
-font-weight:bold;
 text-align:center;
-color:#38bdf8;
-margin-bottom:30px;
+margin-bottom:25px;
+}
+
+.logo img{
+width:80px;
+height:80px;
+border-radius:15px;
 }
 
 .new-chat{
 background:#10a37f;
 color:white;
 border:none;
-padding:14px;
-font-size:16px;
+padding:12px;
 border-radius:8px;
+font-size:16px;
 cursor:pointer;
 margin-bottom:25px;
 }
@@ -56,8 +59,8 @@ background:#0d8c6c;
 }
 
 .sidebar h3{
-margin-bottom:15px;
-color:#d1d5db;
+margin-bottom:10px;
+font-size:18px;
 }
 
 .sidebar ul{
@@ -65,15 +68,8 @@ list-style:none;
 }
 
 .sidebar li{
-background:#2b2c2f;
-padding:12px;
-border-radius:8px;
-margin-bottom:10px;
-cursor:pointer;
-}
-
-.sidebar li:hover{
-background:#3a3b3f;
+padding:10px 0;
+color:#d1d5db;
 }
 
 .main{
@@ -83,7 +79,7 @@ flex-direction:column;
 }
 
 .header{
-background:#2b2c2f;
+background:#2b2d31;
 padding:20px;
 display:flex;
 justify-content:space-between;
@@ -91,75 +87,15 @@ align-items:center;
 }
 
 .header h1{
-font-size:30px;
 color:#38bdf8;
 }
 
 .home-btn{
-text-decoration:none;
 background:#2563eb;
 color:white;
+text-decoration:none;
 padding:10px 18px;
 border-radius:8px;
-}
-
-.home-btn:hover{
-background:#1d4ed8;
-}
-
-.chat{
-flex:1;
-padding:25px;
-overflow-y:auto;
-}
-
-.bot{
-background:#444654;
-padding:15px;
-border-radius:12px;
-margin-bottom:15px;
-max-width:70%;
-line-height:1.6;
-}
-
-.user{
-background:#10a37f;
-padding:15px;
-border-radius:12px;
-margin-left:auto;
-margin-bottom:15px;
-max-width:70%;
-line-height:1.6;
-}
-
-.bottom{
-display:flex;
-padding:20px;
-background:#2b2c2f;
-}
-
-.bottom input{
-flex:1;
-padding:15px;
-font-size:16px;
-border:none;
-border-radius:10px;
-outline:none;
-}
-
-.bottom button{
-margin-left:10px;
-padding:15px 30px;
-background:#10a37f;
-color:white;
-border:none;
-border-radius:10px;
-cursor:pointer;
-font-size:16px;
-}
-
-.bottom button:hover{
-background:#0d8c6c;
 }
 
 </style>
@@ -167,60 +103,100 @@ background:#0d8c6c;
 </head>
 
 <body>
+<div class="sidebar">
 
-<div class="logo">
-    <img src="Screenshot 2026-07-30 120743.png" alt="BrightAI Logo">
-</div>
+    <div class="logo">
+        <img src="Screenshot 2026-07-30 120743.png" alt="BrightAI Logo">
+    </div>
 
-<button class="new-chat" onclick="newChat()">
-➕ New Chat
-</button>
+    <button class="new-chat" onclick="newChat()">
+        ➕ New Chat
+    </button>
 
-<h3>Recent Chats</h3>
+    <h3>Recent Chats</h3>
 
-<ul>
-<li>💬 Python Help</li>
-<li>💬 HTML Project</li>
-<li>💬 AI Questions</li>
-</ul>
+    <ul>
+        <li>💬 Python Help</li>
+        <li>💬 HTML Project</li>
+        <li>💬 AI Questions</li>
+    </ul>
 
 </div>
 
 <div class="main">
 
-<div class="header">
+    <div class="header">
 
-<h1>BrightAI Chat</h1>
+        <h1>BrightAI Chat</h1>
 
-<a href="index.html" class="home-btn">
-🏠 Home
-</a>
+        <a href="index.html" class="home-btn">
+            🏠 Home
+        </a>
+
+    </div>
+    <div id="chat"
+style="
+flex:1;
+padding:30px;
+overflow-y:auto;
+background:#202123;
+">
+
+<div class="bot"
+style="
+background:#343541;
+padding:18px;
+border-radius:12px;
+max-width:700px;
+margin-bottom:20px;
+">
+
+👋 <b>Hello! I am BrightAI.</b>
+
+<br><br>
+
+Welcome to BrightAI. Ask me anything about programming, AI, websites, or technology.
 
 </div>
 
-<div class="chat" id="chat">
-
-<div class="bot">
-👋 Hello! I am <b>BrightAI</b>.<br><br>
-
-Welcome to BrightAI! Ask me anything about programming, AI, websites, or technology.
-</div>
 </div>
 
-<div class="bottom">
+<div
+style="
+display:flex;
+padding:20px;
+background:#2b2d31;
+">
 
 <input
-type="text"
 id="message"
-placeholder="Type your message here..."
-autocomplete="off"
->
+type="text"
+placeholder="Type your message..."
+style="
+flex:1;
+padding:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+outline:none;
+">
 
-<button onclick="sendMessage()">
+<button
+onclick="sendMessage()"
+style="
+margin-left:10px;
+padding:15px 25px;
+background:#10a37f;
+color:white;
+border:none;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+">
+
 Send
-</button>
 
-</div>
+</button>
 
 </div>
 <script>
@@ -235,80 +211,145 @@ const message = input.value.trim();
 if(message==="") return;
 
 chat.innerHTML += `
-<div class="user">${message}</div>
+<div style="
+background:#10a37f;
+padding:15px;
+border-radius:12px;
+max-width:700px;
+margin-left:auto;
+margin-bottom:20px;
+">
+${message}
+</div>
 `;
 
-input.value = "";
-chat.scrollTop = chat.scrollHeight;
+input.value="";
+
+chat.scrollTop=chat.scrollHeight;
 
 chat.innerHTML += `
-<div class="bot" id="typing">
+<div id="typing" style="
+background:#343541;
+padding:15px;
+border-radius:12px;
+max-width:700px;
+margin-bottom:20px;
+">
 🤖 BrightAI is typing...
 </div>
 `;
 
-chat.scrollTop = chat.scrollHeight;
+chat.scrollTop=chat.scrollHeight;
 
 setTimeout(function(){
 
-const typing = document.getElementById("typing");
+const typing=document.getElementById("typing");
+
 if(typing){
 typing.remove();
 }
 
-let reply = "I'm still learning. Soon I'll be connected to a real AI model!";
-
-const text = message.toLowerCase();
-
-if(text.includes("hello") || text.includes("hi")){
-reply = "👋 Hello! How can I help you today?";
-}
-else if(text.includes("your name")){
-reply = "🤖 My name is BrightAI.";
-}
-else if(text.includes("python")){
-reply = "🐍 Python is one of the best programming languages for AI.";
-}
-else if(text.includes("html")){
-reply = "🌐 HTML creates the structure of a website.";
-}
-else if(text.includes("css")){
-reply = "🎨 CSS styles your website.";
-}
-else if(text.includes("javascript")){
-reply = "⚡ JavaScript adds interactivity to websites.";
-}
-
 chat.innerHTML += `
-<div class="bot">${reply}</div>
+<div style="
+background:#343541;
+padding:15px;
+border-radius:12px;
+max-width:700px;
+margin-bottom:20px;
+">
+Thanks for your message! 😊<br><br>
+I'm BrightAI. Soon I'll answer your questions using a real AI model.
+</div>
 `;
 
-chat.scrollTop = chat.scrollHeight;
+chat.scrollTop=chat.scrollHeight;
 
 },1500);
 
 }
 
-input.addEventListener("keypress", function(event){
+input.addEventListener("keypress",function(event){
+
 if(event.key==="Enter"){
 sendMessage();
 }
+
 });
+
+</script>
+<script>
 
 function newChat(){
 
 chat.innerHTML = `
-<div class="bot">
-👋 Hello! I am <b>BrightAI</b>.<br><br>
-How can I help you today?
+<div style="
+background:#343541;
+padding:18px;
+border-radius:12px;
+max-width:700px;
+margin-bottom:20px;
+">
+
+👋 <b>Hello! I am BrightAI.</b>
+
+<br><br>
+
+Welcome to BrightAI.
+
+Start a new conversation by typing your message below.
+
 </div>
 `;
 
-input.value = "";
+input.value="";
 
 }
 
 </script>
 
 </body>
+
 </html>
+<style>
+
+/* Better scrollbar */
+#chat::-webkit-scrollbar{
+width:8px;
+}
+
+#chat::-webkit-scrollbar-thumb{
+background:#555;
+border-radius:10px;
+}
+
+/* Better hover effect */
+.sidebar li{
+padding:12px;
+border-radius:8px;
+transition:0.3s;
+}
+
+.sidebar li:hover{
+background:#2f3136;
+cursor:pointer;
+}
+
+/* Logo animation */
+.logo img{
+transition:0.3s;
+}
+
+.logo img:hover{
+transform:scale(1.08);
+}
+
+/* Better Send button */
+button{
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.03);
+}
+
+</style>
