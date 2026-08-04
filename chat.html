@@ -68,6 +68,22 @@ list-style:none;
 }
 
 .sidebar li{
+.sidebar li{
+list-style:none;
+background:#2b2d31;
+padding:10px 12px;
+margin-bottom:8px;
+border-radius:8px;
+cursor:pointer;
+color:white;
+font-size:14px;
+transition:0.3s;
+}
+
+.sidebar li:hover{
+background:#3a3d42;
+transform:translateX(3px);
+}
 padding:10px 0;
 color:#d1d5db;
 }
@@ -114,13 +130,8 @@ border-radius:8px;
     </button>
 
     <h3>Recent Chats</h3>
-
-    <ul>
-        <li>💬 Python Help</li>
-        <li>💬 HTML Project</li>
-        <li>💬 AI Questions</li>
-    </ul>
-
+<ul id="historyList">
+</ul>     
 </div>
 
 <div class="main">
@@ -203,6 +214,8 @@ Send
 
 const input = document.getElementById("message");
 const chat = document.getElementById("chat");
+const historyList = document.getElementById("historyList");
+let conversations = [];
 
 function sendMessage(){
 
@@ -226,7 +239,21 @@ ${message}
 input.value="";
 
 chat.scrollTop=chat.scrollHeight;
+conversations.push({
+    sender: "user",
+    text: message
+});
+const item = document.createElement("li");
 
+let title = message;
+
+if(title.length > 25){
+title = title.substring(0,25) + "...";
+}
+
+item.innerHTML = "💬 " + title;
+
+historyList.prepend(item);
 chat.innerHTML += `
 <div id="typing" style="
 background:#343541;
@@ -248,7 +275,10 @@ const typing=document.getElementById("typing");
 if(typing){
 typing.remove();
 }
-
+conversations.push({
+    sender: "bot",
+    text: reply
+});
 chat.innerHTML += `
 <div style="
 background:#343541;
